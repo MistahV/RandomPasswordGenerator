@@ -8,10 +8,25 @@ function generatePassword() {
   let allchars = lowerCase.concat(upperCase);
 
   var passwordLength = prompt("How long do you want your random password to be? (MIN: 8 characters  MAX: 128 characters)", "")
+  passwordLength = parseInt(passwordLength)
+  if (passwordLength < 8) {
+    alert('Your password length is too short!')
+  }
+  else if (passwordLength > 128) {
+    alert('Your password is too long!')
+  };
+  
+  /*
   var passwordLower = prompt("Do you want your random password to have lowercase letters?", "")
+  if (passwordLower == 'yes') {
+
+  }
+
+  /*
   var passwordUpper = prompt("Do you want your random password to have uppercase letters?", "")
   var passwordSpecial = prompt("Do you want your random password to have special characters?", "")
   var passwordNumber = prompt("Do you want your random password to have numbers?", "")
+  */
 
   let password = [];
 
@@ -19,6 +34,8 @@ function generatePassword() {
     let index = Math.floor(Math.random() * arr.length);
     return arr[index];
   }
+
+
   /* gets random lowercase letter */
   password.push(getRandom(lowerCase));
   /* gets random uppercase letter */
@@ -28,7 +45,7 @@ function generatePassword() {
   /* gets random number */
   password.push(getRandom(number));
   /* runs the function 8 times to get a random string of characters from the arrays */
-  for (i = 0; i < passwordLength - 5; i++) {
+  for (i = 0; i < passwordLength; i++) {
    password.push(getRandom(allchars));
   }
   return password.join("")
@@ -42,7 +59,8 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-  passwordText.value = password;
+  
+  return passwordText.value = password;
 }
 
 
