@@ -6,7 +6,7 @@ function generatePassword() {
   let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   let specialChar = ['!', '@', '#', '$', '%', '^', '&', '*', '?','+'];
   let number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-  let allChars = ['']
+  let allChars = []
 
   function chooseLength() {
   var length = prompt("How long do you want your random password to be? (MIN: 8 characters  MAX: 128 characters)", "");
@@ -29,90 +29,115 @@ function generatePassword() {
     }
   };
   var passwordLength = chooseLength();
+  
+  while(!lowerCheck && !upperCheck && !numCheck && !specialCheck){
+    alert("You must choose at least one criteria")
+    var lowerCheck = confirm("Do you want to include Lower case characters?")
+    var upperCheck = confirm("Do you want to include Upper case characters?")
+    var numCheck = confirm("Do you want to include Number characters?")
+    var specialCheck = confirm("Do you want to include Special characters?")
+  }
 
+    if(lowerCheck){
+      allChars = allChars.concat(lowerCase)
+    }
+    if(upperCheck){
+      allChars = allChars.concat(upperCase)
+    }
+    if(numCheck){
+      allChars = allChars.concat(number)
+    }
+    if(specialCheck){
+      allChars = allChars.concat(specialChar)
+    }
+  // /* Function to validate user input and include lowercase characters in randomized password if user answers Yes to prompt */
+  // function chooseLower() {
+  //   var passwordLower = prompt("Do you want your random password to have lowercase letters?", "");
+  //   passwordLower.toLowerCase();
+  //   if (passwordLower === 'yes') {
+  //     allChars.push(lowerCase);
+  //   } 
+  //   else if (passwordLower === 'no') {
+      
+  //   } 
+  //   else {
+  //     alert('You must enter "Yes" or "No"! Try again!');
+  //     chooseLower();
+  //   }
+  // };
   
+  // /* Function to validate user input and include uppercase characters in randomized password if user answers Yes to prompt */
+  // function chooseUpper() {
+  //   var passwordUpper = prompt("Do you want your random password to have uppercase letters?", "");
+  //   passwordUpper.toLowerCase();
+  //   if (passwordUpper === 'yes') {
+  //     allChars.push(upperCase);
+  //   } 
+  //   else if (passwordUpper === 'no') {
+      
+  //   } 
+  //   else {
+  //     alert('You must enter "Yes" or "No"! Try again!');
+  //     chooseUpper();
+  //   }
+  // };
+  
+  // /* Function to validate user input and include special characters in randomized password if user answers Yes to prompt */
+  // function chooseSpecial() {
+  //   var passwordSpecial = prompt("Do you want your random password to have special characters?", "");
+  //   passwordSpecial.toLowerCase();
+  //   if (passwordSpecial === 'yes') {
+  //     allChars.push(specialChar);
+  //   } 
+  //   else if (passwordSpecial === 'no') {
+      
+  //   } 
+  //   else {
+  //     alert('You must enter "Yes" or "No"! Try again!');
+  //     chooseSpecial();
+  //   }
+  // };
+  
+  // /* Function to validate user input and include numbers in randomized password if user answers Yes to prompt */
+  // function chooseNumber() {
+  //   var passwordNumber = prompt("Do you want your random password to have numbers?", "");
+  //   passwordNumber.toLowerCase();
+  //   if (passwordNumber === 'yes') {
+  //     allChars.push(number);
+  //   } 
+  //   else if (passwordNumber === 'no') {
 
-  /* Function to validate user input and include lowercase characters in randomized password if user answers Yes to prompt */
-  function chooseLower() {
-    var passwordLower = prompt("Do you want your random password to have lowercase letters?", "");
-    passwordLower.toLowerCase();
-    if (passwordLower === 'yes') {
-      allChars.push(lowerCase);
-    } 
-    else if (passwordLower === 'no') {
-      
-    } 
-    else {
-      alert('You must enter "Yes" or "No"! Try again!');
-      chooseLower();
-    }
-  };
+  //   } 
+  //   else {
+  //     alert('You must enter "Yes" or "No"! Try again!');
+  //     chooseNumber();
+  //   }
+  // };
   
-  /* Function to validate user input and include uppercase characters in randomized password if user answers Yes to prompt */
-  function chooseUpper() {
-    var passwordUpper = prompt("Do you want your random password to have uppercase letters?", "");
-    passwordUpper.toLowerCase();
-    if (passwordUpper === 'yes') {
-      allChars.push(upperCase);
-    } 
-    else if (passwordUpper === 'no') {
-      
-    } 
-    else {
-      alert('You must enter "Yes" or "No"! Try again!');
-      chooseUpper();
-    }
-  };
-  
-  /* Function to validate user input and include special characters in randomized password if user answers Yes to prompt */
-  function chooseSpecial() {
-    var passwordSpecial = prompt("Do you want your random password to have special characters?", "");
-    passwordSpecial.toLowerCase();
-    if (passwordSpecial === 'yes') {
-      allChars.push(specialChar);
-    } 
-    else if (passwordSpecial === 'no') {
-      
-    } 
-    else {
-      alert('You must enter "Yes" or "No"! Try again!');
-      chooseSpecial();
-    }
-  };
-  
-  /* Function to validate user input and include numbers in randomized password if user answers Yes to prompt */
-  function chooseNumber() {
-    var passwordNumber = prompt("Do you want your random password to have numbers?", "");
-    passwordNumber.toLowerCase();
-    if (passwordNumber === 'yes') {
-      allChars.push(number);
-    } 
-    else if (passwordNumber === 'no') {
-
-    } 
-    else {
-      alert('You must enter "Yes" or "No"! Try again!');
-      chooseNumber();
-    }
-  };
-  
-  chooseLower();
-  chooseUpper();
-  chooseSpecial();
-  chooseNumber();
+  // chooseLower();
+  // chooseUpper();
+  // chooseSpecial();
+  // chooseNumber();
   
 /* Function that randomizes elements from the specified array */
- function getRandom() {
-  let index = allChars[Math.floor(Math.random() * allChars.length)];
-  return index
- };
-
-  let password = [];
-  /* runs the function the inputted number of times to get a random string of characters from the arrays */
-  for (i = 0; i < passwordLength; i++) {
-   password.push(getRandom());
+//  function getRandom() {
+//   let index = allChars[Math.floor(Math.random() * allChars.length)];
+//   return index
+//  };
+  let password = ""
+  for(i=0; i<passwordLength; i++){
+    randomIndex = Math.floor(Math.random()* allChars.length);
+    randomCharacter = allChars[randomIndex]
+    password += randomCharacter
   }
-   return password.join("")
+
+  return password
+//   let password = [];
+//   /* runs the function the inputted number of times to get a random string of characters from the arrays */
+//   for (i = 0; i < passwordLength; i++) {
+//    password.push(getRandom());
+//   }
+//    return password.join("")
 
 };
 
